@@ -17,6 +17,9 @@ public class BandService {
     private BandRepository bandRepository;
 
     public Band createBand(Band band) {
+        if (band.getMusicians() != null) {
+            band.getMusicians().forEach(musician -> musician.setBand(band));
+        }
         return bandRepository.save(band);
     }
 
